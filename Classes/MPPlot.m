@@ -107,9 +107,9 @@
     NSMutableArray *pointsArray=[[NSMutableArray alloc] init];
     
     if(max!=min){
-        for (NSString *p in values) {
+        for (NSNumber *p in values) {
             
-            CGFloat val=[p floatValue];
+            double val=[p doubleValue];
             
             val=((val-min)/(max-min));
             
