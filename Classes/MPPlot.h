@@ -21,17 +21,17 @@ typedef NS_ENUM(NSUInteger, MPPlotType) {
     MPPlotTypeCake=3,
 };
 
-typedef CGFloat(^GraphPointsAlgorithm)(CGFloat x);
+typedef double(^GraphPointsAlgorithm)(double x);
 
 
 struct _MPValuesRange {
-    CGFloat max;
-    CGFloat min;
+    double max;
+    double min;
 };
 
 typedef struct _MPValuesRange MPGraphValuesRange;
 
-NS_INLINE MPGraphValuesRange MPMakeGraphValuesRange(CGFloat min, CGFloat max) {
+NS_INLINE MPGraphValuesRange MPMakeGraphValuesRange(double min, double max) {
     MPGraphValuesRange r;
     r.min = min;
     r.max = max;

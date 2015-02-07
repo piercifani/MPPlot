@@ -14,13 +14,13 @@
 
 + (MPGraphValuesRange)rangeForValues:(NSArray *)values{
     
-    CGFloat min,max;
+    double min,max;
     
-    min=max=[[values firstObject] floatValue];
+    min=max=[[values firstObject] doubleValue];
     
     for (NSInteger i=0; i<values.count; i++) {
         
-        CGFloat val=[[values objectAtIndex:i] floatValue];
+        CGFloat val=[[values objectAtIndex:i] doubleValue];
         
         if (val>max) {
             max=val;
