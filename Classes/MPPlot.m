@@ -250,6 +250,8 @@
 
 - (void)displayDetailViewAtPoint:(CGPoint)point{
     
+    [self.delegate didTapAtPointIndex:currentTag];
+    
     if ([[self.values objectAtIndex:currentTag] isKindOfClass:[NSString class]]) {
         self.detailView.text=[self.values objectAtIndex:currentTag];
     }else self.detailView.text=[NSString stringWithFormat:@"%@",[self.detailLabelFormatter stringFromNumber:[self.values objectAtIndex:currentTag]]];

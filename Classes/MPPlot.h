@@ -58,6 +58,12 @@ NS_INLINE MPGraphValuesRange MPGetBiggestRange(MPGraphValuesRange r1,MPGraphValu
 
 @end
 
+@protocol MPPlotDelegate <NSObject>
+
+- (void) didTapAtPointIndex:(NSUInteger)pointIndex;
+
+@end
+
 @interface MPPlot : UIView{
     
     MPPlotType plotType;
@@ -99,7 +105,7 @@ NS_INLINE MPGraphValuesRange MPGetBiggestRange(MPGraphValuesRange r1,MPGraphValu
 @property (nonatomic,retain) UIColor *detailTextColor;
 @property (nonatomic,retain) NSNumberFormatter *detailLabelFormatter;
 
-
+@property (nonatomic, weak) id <MPPlotDelegate> delegate;
 
 - (void)animate;
 
