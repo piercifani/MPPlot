@@ -225,6 +225,11 @@
 
 #pragma mark Actions
 
+- (NSArray *)tappableButtons;
+{
+    return buttons;
+}
+
 - (void)tap:(UIButton *)button{
     
     if (button.tag==currentTag) {

@@ -113,6 +113,8 @@ NS_INLINE MPGraphValuesRange MPGetBiggestRange(MPGraphValuesRange r1,MPGraphValu
 
 - (void)tap:(UIButton *)button;
 
+- (NSArray *)tappableButtons;
+
 @end
 
 
