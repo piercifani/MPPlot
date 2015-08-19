@@ -10,6 +10,8 @@
 #import "MPGraphView.h"
 #import "MPBarsGraphView.h"
 
+static NSInteger SentinelIDontUnderstand = -1;
+
 @implementation MPPlot
 
 + (MPGraphValuesRange)rangeForValues:(NSArray *)values{
@@ -62,12 +64,12 @@
 }
 
 + (id)plotWithType:(MPPlotType)type frame:(CGRect)frame{
- 
+    
     switch (type) {
         case MPPlotTypeGraph:
             return [[MPGraphView alloc] initWithFrame:frame];
             break;
-
+            
         case MPPlotTypeBars:
             return [[MPBarsGraphView alloc] initWithFrame:frame];
             break;
@@ -85,7 +87,7 @@
     
     if(self.detailView.superview)
         [self.detailView removeFromSuperview];
-
+    
     
 }
 
@@ -233,7 +235,7 @@
 - (void)tap:(UIButton *)button{
     
     if (button.tag==currentTag) {
-        currentTag=-1;
+        currentTag=SentinelIDontUnderstand;
     }else currentTag=button.tag;
     
     if (self.detailView.superview) {
@@ -246,14 +248,18 @@
             
             if(currentTag>=0)
                 [self displayDetailViewAtPoint:button.center];
-
+            
         }];
         
     }else [self displayDetailViewAtPoint:button.center];
- 
+    
 }
 
 - (void)displayDetailViewAtPoint:(CGPoint)point{
+    
+    if (currentTag==SentinelIDontUnderstand) {
+        return;
+    }
     
     [self.delegate didTapAtPointIndex:currentTag];
     
@@ -271,7 +277,7 @@
         self.detailView.transform=CGAffineTransformMakeScale(1, 1);
     }];
     
-
+    
 }
 
 
@@ -292,7 +298,7 @@
     label.clipsToBounds=YES;
     
     self.detailView=(UILabel <MPDetailView> *)label;
-
+    
     return _detailView;
 }
 
